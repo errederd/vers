@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream o Video de Espera</title>
+</head>
+<body>
+    <h1>Stream Status</h1>
+    <div id="video-container">
+        <!-- Aquí se mostrará el video dependiendo del estado -->
+    </div>
+
+    <script>
+        async function fetchStreamStatus() {
+            const response = await fetch('/');
+            const html = await response.text();
+            document.getElementById('video-container').innerHTML = html;
+        }
+
+        // Llama a la función cada 30 segundos para actualizar el video
+        setInterval(fetchStreamStatus, 30000);
+        fetchStreamStatus();  // Llama la primera vez al cargar
+    </script>
+</body>
+</html>
